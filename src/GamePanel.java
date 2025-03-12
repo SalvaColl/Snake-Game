@@ -169,7 +169,25 @@ public class GamePanel extends JPanel implements ActionListener {
         FontMetrics metrics2 = getFontMetrics(g.getFont());
         g.drawString("Score: " + applesEaten, (SCREEN_WIDTH - metrics2.stringWidth("Score: " + applesEaten)) / 2,
                 g.getFont().getSize());
+        
+        // Prompt to restart
+        g.setColor(Color.white);
+        g.setFont(new Font("Ink Free", Font.BOLD, 30));
+        g.drawString("Press R to Restart", (SCREEN_WIDTH - metrics2.stringWidth("Press R to Restart")) / 2, SCREEN_HEIGHT / 2 + 50);
     }
+
+    public void restartGame() {
+        bodyParts = 6; // Reset the snake's body size
+        applesEaten = 0; // Reset score
+        direction = 'R'; // Set initial direction
+        for (int i = 0; i < bodyParts; i++) {
+            x[i] = 0;
+            y[i] = 0;
+        }
+        newApple(); // Generate a new apple
+        running = true; // Set the game to running state
+        timer.start(); // Start the timer again
+    }    
 
     @Override
     public void actionPerformed(ActionEvent e) {
@@ -215,8 +233,14 @@ public class GamePanel extends JPanel implements ActionListener {
                         direction = 'D';
                     }
                     break;
+
+                // Press 'R' to restart the game
+                case KeyEvent.VK_R:
+                    if (!running) {
+                        restartGame();
+                    }
+                    break;
             }
         }
-
     }
 }
