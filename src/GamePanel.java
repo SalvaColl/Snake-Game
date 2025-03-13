@@ -8,11 +8,11 @@ import java.util.Random;
 
 public class GamePanel extends JPanel implements ActionListener {
 
-    static final int SCREEN_WIDTH = 800;
-    static final int SCREEN_HEIGHT = 800;
-    static final int UNIT_SIZE = 20;
+    static final int SCREEN_WIDTH = 800; // Change width
+    static final int SCREEN_HEIGHT = 800; // CHange height
+    static final int UNIT_SIZE = 20; // Change size of game squares 
     static final int GAME_UNITS = (SCREEN_WIDTH * SCREEN_HEIGHT) / UNIT_SIZE;
-    static final int DELAY = 75;
+    static final int DELAY = 75; // Change speed
 
     final int x[] = new int[GAME_UNITS];
     final int y[] = new int[GAME_UNITS];
